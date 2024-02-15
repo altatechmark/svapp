@@ -29,3 +29,21 @@ def get_silence_threshold():
             return jsonify({"silence_threshold": silence_threshold}), 200
     except FileNotFoundError:
         return jsonify({"error": "Settings file not found."}), 404
+
+
+
+function getSilenceThreshold() {
+        $.ajax({
+            url: '/get_silence_threshold',
+            type: 'GET',
+            success: function(response) {
+                $('#currentThreshold').text(response.silence_threshold);
+            },
+            error: function() {
+                $('#currentThreshold').text('Error loading silence threshold');
+            }
+        });
+    }
+
+    // Load the current silence threshold when the page loads
+    getSilenceThreshold();
