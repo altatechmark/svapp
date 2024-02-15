@@ -17,3 +17,15 @@ def update_silence_threshold():
         return jsonify({"message": "Silence threshold updated successfully"}), 200
     else:
         return jsonify({"error": "Missing silence_threshold in request"}), 400
+
+
+
+@app.route('/get_silence_threshold', methods=['GET'])
+def get_silence_threshold():
+    try:
+        with open('settings.json', 'r') as file:
+            settings = json.load(file)
+            silence_threshold = settings.get('silence_threshold', 'Not set')
+            return jsonify({"silence_threshold": silence_threshold}), 200
+    except FileNotFoundError:
+        return jsonify({"error": "Settings file not found."}), 404
