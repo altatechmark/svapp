@@ -45,5 +45,27 @@ function getSilenceThreshold() {
         });
     }
 
+
+
+let fragranceDetected = false;
+const message = "The Sexiest Scent on the Planet, White Queen, and Freshly Laundered are my top three picks for a perfect evening out".toLowerCase();
+
+const fragrances = [
+  "EAU MY SOUL", 
+  "THE SEXIEST SCENT ON THE PLANET", 
+  "FRESHLY LAUNDERED", 
+  "WHITE QUEEN",
+  "FLORA PSYCHEDELIA", 
+  "NEW YORK 55", 
+  "SALTBURN DRIFTWOOD", 
+  "WE'RE NOT OUT OF THE WOODS YET", 
+  "MAXED OUT"
+].map(fragrance => fragrance.toLowerCase());
+
+// Check if the message contains any of the fragrances
+fragranceDetected = fragrances.some(fragrance => message.includes(fragrance));
+
+console.log(fragranceDetected); // This will log 'true' if any fragrance is detected, 'false' otherwise
+
     // Load the current silence threshold when the page loads
     getSilenceThreshold();
